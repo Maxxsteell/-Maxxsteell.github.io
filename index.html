@@ -364,5 +364,137 @@
             });
         });
     </script>
+<!-- Vista previa - Tarea 5: Supabase Auth (Función en desarrollo) -->
+<section id="vista-previa-auth" class="preview-auth-section" aria-labelledby="titulo-vista-previa">
+  <div class="preview-auth-card">
+    <span class="preview-badge">Función en desarrollo</span>
+    <h2 id="titulo-vista-previa">Seguimiento de ODS y participación (Vista previa)</h2>
+    <p class="preview-description">
+      Prepara tu acceso para guardar los ODS de la Agenda 2030 que te interesan y enviar propuestas a
+      <strong>Interact Veracruz (Distrito 4185)</strong>. El registro y almacenamiento de datos se
+      conectarán con Supabase Auth en la siguiente entrega.
+    </p>
+
+    <form id="form-vista-previa" class="preview-form" novalidate>
+      <label for="correo-auth">Correo electrónico (obligatorio)</label>
+      <input
+        type="email"
+        id="correo-auth"
+        name="correo"
+        placeholder="ejemplo@correo.com"
+        required
+      />
+
+      <label for="nombre-opcional">Nombre o alias (opcional)</label>
+      <input
+        type="text"
+        id="nombre-opcional"
+        name="nombre"
+        placeholder="Cómo te gustaría que te llamen"
+      />
+
+      <label for="ods-interes">ODS de interés (obligatorio)</label>
+      <select id="ods-interes" name="ods" required>
+        <option value="">Selecciona un ODS</option>
+        <option value="ODS 3 - Salud y bienestar">ODS 3 - Salud y bienestar</option>
+        <option value="ODS 4 - Educación de calidad">ODS 4 - Educación de calidad</option>
+        <option value="ODS 6 - Agua limpia y saneamiento">ODS 6 - Agua limpia y saneamiento</option>
+        <option value="ODS 11 - Ciudades y comunidades sostenibles">ODS 11 - Ciudades y comunidades sostenibles</option>
+        <option value="ODS 13 - Acción por el clima">ODS 13 - Acción por el clima</option>
+        <option value="ODS 17 - Alianzas para lograr los objetivos">ODS 17 - Alianzas para lograr los objetivos</option>
+      </select>
+
+      <label for="propuesta-ods">Propuesta o mensaje breve (opcional)</label>
+      <textarea
+        id="propuesta-ods"
+        name="propuesta"
+        rows="3"
+        placeholder="Comparte una idea de acción comunitaria o duda..."
+      ></textarea>
+
+      <button type="submit" class="btn-preview">Simular vista previa de acceso</button>
+    </form>
+
+    <div id="estado-vista-previa" class="preview-status" role="status" aria-live="polite"></div>
+  </div>
+</section>
+
+<style>
+  .preview-auth-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .preview-auth-card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.75rem;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #ffffff;
+  }
+
+  .preview-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: #fef3c7;
+    color: #92400e;
+    margin-bottom: 0.75rem;
+  }
+
+  .preview-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .preview-form input,
+  .preview-form select,
+  .preview-form textarea {
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .btn-preview {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .preview-status {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+</style>
+
+<script>
+  const formVistaPrevia = document.getElementById("form-vista-previa");
+  const estadoVistaPrevia = document.getElementById("estado-vista-previa");
+
+  if (formVistaPrevia && estadoVistaPrevia) {
+    formVistaPrevia.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const correo = document.getElementById("correo-auth").value.trim();
+      const ods = document.getElementById("ods-interes").value;
+
+      if (!correo || !ods) {
+        estadoVistaPrevia.textContent =
+          "Función en desarrollo: completa al menos el correo y un ODS para revisar la vista previa.";
+        return;
+      }
+
+      estadoVistaPrevia.textContent =
+        `Función en desarrollo: vista previa lista para ${correo} con ${ods}. No se almacenan datos todavía; la autenticación y guardado iniciarán con Supabase Auth.`;
+    });
+  }
+</script>
 </body>
 </html>
